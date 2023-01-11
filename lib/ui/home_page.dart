@@ -401,7 +401,38 @@ class HomeBody extends StatelessWidget {
   }
 
   Widget listItemView(NewsModel news, BuildContext context) {
-    return Container();
+    return Column(
+      children: [
+        Row(
+          children: [
+            const SizedBox(
+              width: 120.0,
+              child: Text(
+                "testtesttesttesttesttesttest",
+                style: TextStyle(color: Colors.blueAccent),
+              ),
+            ),
+            Row(
+              children: const [
+                Text("17:30 | 08 dekabr 2021 |"),
+                Icon(
+                  Icons.remove_red_eye,
+                  color: Colors.blueAccent,
+                  size: 10.0,
+                ),
+                Text(
+                  "12219",
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: Colors.blueAccent,
+                  ),
+                )
+              ],
+            )
+          ],
+        )
+      ],
+    );
   }
 
   void loadData() {
