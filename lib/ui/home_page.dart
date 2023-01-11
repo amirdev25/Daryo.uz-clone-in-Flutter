@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:daryo_clone/models/news_model.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,7 +13,7 @@ class HomePage extends StatelessWidget {
         title: const Text("Daryo"),
       ),
       drawer: myDrawer(),
-      body: const HomeBody(),
+      body: HomeBody(),
     );
   }
 
@@ -276,10 +279,142 @@ class HomePage extends StatelessWidget {
 }
 
 class HomeBody extends StatelessWidget {
-  const HomeBody({Key? key}) : super(key: key);
+  HomeBody({Key? key}) : super(key: key);
+  List<NewsModel> newsList = [];
 
   @override
   Widget build(BuildContext context) {
+    loadData();
+
+    return Column(
+      children: [
+        const DefaultTabController(
+          length: 11,
+          child: TabBar(
+            isScrollable: true,
+            tabs: [
+              Tab(
+                child: Text(
+                  "So'ngi yangiliklar",
+                  style: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Asosiy yangiliklar",
+                  style: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Eng ko'p o'qilganlar",
+                  style: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Kolumnistlar",
+                  style: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Multimedia",
+                  style: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Mahalliy",
+                  style: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Dunyo",
+                  style: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Madaniyat",
+                  style: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Lifestyle",
+                  style: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Sport",
+                  style: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Pul",
+                  style: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const Divider(
+          height: 2.0,
+          color: Colors.grey,
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: newsList.length,
+            itemBuilder: (context, index) {
+              return listItemView(newsList[index], context);
+            },
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget listItemView(NewsModel news, BuildContext context) {
     return Container();
+  }
+
+  void loadData() {
+    newsList.add(NewsModel());
+    newsList.add(NewsModel());
+    newsList.add(NewsModel());
+    newsList.add(NewsModel());
+    newsList.add(NewsModel());
+    newsList.add(NewsModel());
+    newsList.add(NewsModel());
+    newsList.add(NewsModel());
+    newsList.add(NewsModel());
+    newsList.add(NewsModel());
+    newsList.add(NewsModel());
   }
 }
