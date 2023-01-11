@@ -1,3 +1,5 @@
+import 'package:daryo_clone/ui/details_page.dart';
+import 'package:daryo_clone/ui/home_page.dart';
 import 'package:daryo_clone/utils/Constants.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +13,8 @@ class DaryoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: Constants.HOME,
       routes: {
         Constants.HOME: (context) => HomePage(),
         Constants.DETAILS: (context) => DetailsPage(),
