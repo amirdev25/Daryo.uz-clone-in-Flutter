@@ -27,49 +27,103 @@ class DetailsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
-        width: double.infinity,
-        margin: const EdgeInsets.all(16.0),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.grey,
-            width: 1.0,
+      child: Center(
+        child: Container(
+          width: double.infinity,
+          margin: const EdgeInsets.all(16.0),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.grey,
+              width: 0.5,
+            ),
           ),
-        ),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.all(16.0),
-                  height: 16.0,
-                  width: 4.0,
-                  color: Colors.blue,
-                ),
-                Text(news.type!),
-              ],
-            ),
-            const Divider(
-              height: 2.0,
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 16.0, bottom: 8.0, left: 16.0),
-              child: Row(
+          child: Column(
+            children: [
+              Row(
                 children: [
-                  Text(
-                    "${news.time} | ${news.date}",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 12.0,
-                    ),
+                  Container(
+                    margin: const EdgeInsets.all(16.0),
+                    height: 16.0,
+                    width: 4.0,
+                    color: Colors.blue,
                   ),
-                  Row(children: [
-                    Icon(Icons.remove_red_eye)
-                  ],)
+                  Text(news.type!),
                 ],
               ),
-            )
-          ],
+              const Divider(
+                height: 2.0,
+              ),
+              Container(
+                margin:
+                    const EdgeInsets.only(top: 16.0, bottom: 8.0, left: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "${news.time} | ${news.date}",
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 12.0,
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(
+                        right: 16.0,
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.remove_red_eye,
+                            color: Colors.blueAccent,
+                            size: 18.0,
+                          ),
+                          const SizedBox(
+                            width: 4.0,
+                          ),
+                          Text(
+                            news.watchedCount!,
+                            style: const TextStyle(
+                              color: Colors.blueAccent,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(
+                  left: 16.0,
+                  right: 16.0,
+                  bottom: 16.0,
+                ),
+                child: Text(
+                  news.title!,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(
+                  left: 16.0,
+                  right: 16.0,
+                ),
+                child: FadeInImage.assetNetwork(
+                  placeholder: "assets/loading.gif",
+                  image: news.imgUrl!,
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.all(16.0),
+                child: Text(news.content!),
+              ),
+            ],
+          ),
         ),
       ),
     );
